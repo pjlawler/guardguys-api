@@ -7,13 +7,13 @@ import Vapor
 public func configure(_ app: Application) async throws {
     // uncomment to serve files from /Public folder
     // app.middleware.use(FileMiddleware(publicDirectory: app.directory.publicDirectory))
-
+    
+    
     if let databaseURLString = Environment.get("DATABASE_URL"),
        let databaseURL = URL(string: databaseURLString),
        let username = databaseURL.user,
        let password = databaseURL.password {
-
-        let hostname = databaseURL.host ?? "localhost"
+       let hostname = databaseURL.host ?? "localhost"
         let port = databaseURL.port ?? 5432
         let databaseName = databaseURL.path.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
         var tlsConfig = TLSConfiguration.makeClientConfiguration()
